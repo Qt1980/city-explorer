@@ -18,17 +18,20 @@ City Explorer uses remote API's to search for cities around the globe.
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
+White Board
+
+
 ## Credit and Collaborations
 Kassie Bradshaw
 
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Name of feature: ________________________________
+Name of feature: City Explorer
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _15 Hours____
 
-Start time: _____
+Start time: __730pm___
 
 Finish time: _____
 
