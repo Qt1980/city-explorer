@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
+
+import axios from 'axios';
 import Search from './Search.js';
 
 class App extends React.Component {
@@ -15,13 +16,17 @@ class App extends React.Component {
     handleShowSearch = () => {
         this.setState({alreadySearched: false});
     }
-    handleSearch = (searchedCity) => {
+    handleSearch = async(searchedCity) => {
         console.log('search', searchedCity);
         this.setState({
             alreadySearched: true,
             searchedCity: searchedCity
         });
-        let locationAnswerData = await axios.get('');
+
+        const accessKey = 'pk.03fdf7aa022ed8a291e3d662fc9b509a';
+        let locationAnswerData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${accessKey}&q=${searchedCity}&format=json`);
+        console.log(locationAnswerData);
+        
     }
     render () {
         return(

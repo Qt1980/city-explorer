@@ -13,7 +13,7 @@ class Search extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmittedForm}>
-                <input type="text" red={this.textInput} />
+                <input type="text" ref={this.textInput} />
                 <input type="submit" />
             </form>
         )
