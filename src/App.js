@@ -23,8 +23,7 @@ class App extends React.Component {
             searchedCity: searchedCity
         });
 
-        const accessKey = 'pk.03fdf7aa022ed8a291e3d662fc9b509a';
-        let locationAnswerData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${accessKey}&q=${searchedCity}&format=json`);
+        let locationAnswerData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${searchedCity}&format=json`);
         console.log(locationAnswerData);
         
     }
