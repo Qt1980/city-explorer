@@ -68,7 +68,7 @@ class App extends React.Component {
               <Weather forecastData={this.state.forecastData} />
              </>
              : <Search handleSearch={this.handleSearch} hideError={this.hideError} />}
-             <button onClick={this.handleShowSearch}>Search Again</button> :
+             
             </>
         );
     }
