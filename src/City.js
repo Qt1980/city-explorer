@@ -1,5 +1,5 @@
 import React from 'react';
-import Jumbotron from 'reach-bootstrap/Jumbotron';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 
 class City extends React.Component {
@@ -13,7 +13,7 @@ class City extends React.Component {
                  <p>
                  <Button onClick={this.handleShowSearch}>Search Again</Button>
                  </p>
-                 <img src={`map url and access key`} alt="map"/>
+                 <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.props.cityData.lat},${this.props.cityData.lon}&zoom=12`} alt="map"/>
              </Jumbotron>
             </>
         )

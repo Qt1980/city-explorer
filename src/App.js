@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 
 import axios from 'axios';
-import Error from './'
-import City from './City.js'
-import Weather from './Weather.js';
+import Error from './Error.js';
+import City from './City.js';
+// import Weather from './Weather.js';
 import Search from './Search.js';
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
     }
 
     hideError = () => {
-        this.setState({ error: {} };)
+        this.setState({ error: {} });
     }
 
     //The handleShowSearch function set the state of the APP constructor to false under applicable situations
@@ -65,7 +65,7 @@ class App extends React.Component {
              <>
              
               <City handleShowSearch={this.handleShowSearch} cityData={this.state.locationData} errorState={this.state.error}/>
-              <Weather forecastData={this.state.forecastData} />
+              {/* <Weather forecastData={this.state.forecastData} /> */}
              </>
              : <Search handleSearch={this.handleSearch} hideError={this.hideError} />}
              
