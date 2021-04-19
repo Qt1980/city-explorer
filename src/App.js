@@ -4,8 +4,9 @@ import './App.css';
 import axios from 'axios';
 import Error from './Error.js';
 import City from './City.js';
-// import Weather from './Weather.js';
+import Weather from './Weather.js';
 import Search from './Search.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -34,24 +35,29 @@ class App extends React.Component {
           let locationAnswerData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${searchedCity}&format=json`);
           console.log(locationAnswerData);
 
+        //   this.getForecastData();
+        const forecastData = await axios.get('http://localhost:3002/weather')
+
           this.setState({
             alreadySearched: true,
             searchedCity: searchedCity,
-            locationData: locationAnswerData.data[0]
+            locationData: locationAnswerData.data[0],
+            forecastData: forecastData.data
+
          });
         } catch (err) {
             console.log(`We have an error: ${err}`);
             this.setState({error: err});
         }
-        this.getForecastData();
     }
 
     //this function is getting the weather data from a weather API from lab 07.
     getForecastData = async() => {
-        const forecastData = await axios.get('url from weather api')
+        const forecastData = await axios.get('http://localhost:3002/weather')
         this.setState({
-            forecastData: forecastData.data
+            forecastData: forecastData.data //ask about why this line needed to be placed above at line 45 which somehow connect to line 11 app.use(cors()) and line 2 in the front end server.js file.
         })
+
     }
 
     render() {
@@ -65,7 +71,7 @@ class App extends React.Component {
              <>
              
               <City handleShowSearch={this.handleShowSearch} cityData={this.state.locationData} errorState={this.state.error}/>
-              {/* <Weather forecastData={this.state.forecastData} /> */}
+              <Weather forecastData={this.state.forecastData} />
              </>
              : <Search handleSearch={this.handleSearch} hideError={this.hideError} />}
              
