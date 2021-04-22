@@ -17,6 +17,7 @@ class App extends React.Component {
             alreadySearched: false, //this line indicates whether the city has been searched by the user
             searchedCity: '', //this line indicates the city that a user wants to search.
             error: {},
+            movieData: []
         };
     }
 

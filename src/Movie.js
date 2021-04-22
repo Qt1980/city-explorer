@@ -2,27 +2,27 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 
 class Movie extends React.Component {
-    render(){
-        return
-        <>
-            <Table striped bordered hover size="sm">
-                <thead>
-                    <tr>
-                        <th>Film</th>
-                        <th>Overview</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.movieData.map((day, index)
-                    => (
-                        <tr key={index}>
-                            <td>{day.film}</td>
-                            <td>{day.overview}</td>
+    render() {
+        return (
+            <>
+                <Table striped bordered hover size="sm">
+                    <thead>
+                        <tr>
+                            <th>Film</th>
+                            <th>Overview</th>
                         </tr>
-                    ))}
-                </tbody>
-            </Table>
-        </>
+                    </thead>
+                    <tbody>
+                        {this.props.movieData.map((film, index) => (
+                            <tr key={index}>
+                                <td>{film.title}</td>
+                                <td>{film.overview}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+           </>
+        )
     }
 }
 
