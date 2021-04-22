@@ -5,6 +5,7 @@ import axios from 'axios';
 import Error from './Error.js';
 import City from './City.js';
 import Weather from './Weather.js';
+import Movie from './Movie.js';
 import Search from './Search.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -36,7 +37,7 @@ class App extends React.Component {
           console.log(locationAnswerData);
 
         //   this.getForecastData();
-        const forecastData = await axios.get('http://localhost:3002/weather')
+        const forecastData = await axios.get(`http://localhost:3002/weather?lat=${locationAnswerData.data[0].lat}&lon=${locationAnswerData.data[0].lon}`)
 
           this.setState({
             alreadySearched: true,
@@ -45,12 +46,21 @@ class App extends React.Component {
             forecastData: forecastData.data
 
          });
+
+         const movieData = await axios.get(`http://localhost:3002/movies?city=${this.state.searchedCity}`);
+         console.log(movieData.data)
+
+         this.setState({
+             movieData: movieData.data
+         })
+         console.log('movies in state', this.state.movieData)
         } catch (err) {
             console.log(`We have an error: ${err}`);
             this.setState({error: err});
         }
     }
 
+    
     //this function is getting the weather data from a weather API from lab 07.
     getForecastData = async() => {
         const forecastData = await axios.get('http://localhost:3002/weather')
@@ -66,12 +76,11 @@ class App extends React.Component {
             
              <h1>City Explorer</h1>
              {this.state.error.message ? <Error errorState={this.state.error} hideError={this.hideError} /> : ''}
-
              {this.state.alreadySearched ?
              <>
-             
               <City handleShowSearch={this.handleShowSearch} cityData={this.state.locationData} errorState={this.state.error}/>
               <Weather forecastData={this.state.forecastData} />
+              <Movie movieData={this.state.movieData} />
              </>
              : <Search handleSearch={this.handleSearch} hideError={this.hideError} />}
              
