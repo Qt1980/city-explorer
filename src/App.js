@@ -38,7 +38,7 @@ class App extends React.Component {
           console.log(locationAnswerData);
 
         //   this.getForecastData();
-        const forecastData = await axios.get(`http://localhost:3002/weather?lat=${locationAnswerData.data[0].lat}&lon=${locationAnswerData.data[0].lon}`)
+        const forecastData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather?lat=${locationAnswerData.data[0].lat}&lon=${locationAnswerData.data[0].lon}`)
 
           this.setState({
             alreadySearched: true,
@@ -48,7 +48,7 @@ class App extends React.Component {
 
          });
 
-         const movieData = await axios.get(`http://localhost:3002/movies?city=${this.state.searchedCity}`);
+         const movieData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies?city=${this.state.searchedCity}`);
          console.log(movieData.data)
 
          this.setState({
@@ -64,7 +64,7 @@ class App extends React.Component {
     
     //this function is getting the weather data from a weather API from lab 07.
     getForecastData = async() => {
-        const forecastData = await axios.get('http://localhost:3002/weather')
+        const forecastData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather`)
         this.setState({
             forecastData: forecastData.data //ask about why this line needed to be placed above at line 45 which somehow connect to line 11 app.use(cors()) and line 2 in the front end server.js file.
         })
